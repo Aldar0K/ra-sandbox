@@ -8,3 +8,8 @@ export const protocolChoices = [
   { id: 'udp', name: 'UDP' },
   { id: 'icmp', name: 'ICMP' },
 ]
+
+export const enabledChoices = [
+  { id: 'true', name: 'Enabled' },
+  { id: 'false', name: 'Disabled' },
+]
