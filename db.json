@@ -224,7 +224,7 @@
       "id": 21,
       "name": "Deny legacy FTP",
       "enabled": true,
-      "action": "deny",
+      "action": "allow",
       "protocol": "tcp",
       "source": "10.0.0.0/16",
       "destination": "10.0.92.0/24",
@@ -234,7 +234,7 @@
     {
       "id": 22,
       "name": "Allow SFTP batch jobs",
-      "enabled": true,
+      "enabled": false,
       "action": "allow",
       "protocol": "tcp",
       "source": "10.0.93.0/24",
@@ -245,8 +245,8 @@
     {
       "id": 23,
       "name": "Quarantine subnet block all",
-      "enabled": true,
-      "action": "deny",
+      "enabled": false,
+      "action": "allow",
       "protocol": "tcp",
       "source": "10.0.250.0/24",
       "destination": "10.0.0.0/16",
@@ -256,7 +256,7 @@
     {
       "id": 24,
       "name": "Allow health checks",
-      "enabled": true,
+      "enabled": false,
       "action": "allow",
       "protocol": "tcp",
       "source": "10.0.230.0/24",
