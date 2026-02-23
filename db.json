@@ -1,0 +1,268 @@
+{
+  "firewallRules": [
+    {
+      "id": 1,
+      "name": "Allow HTTPS inbound to web",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.10.10/32",
+      "port": "443",
+      "priority": 100
+    },
+    {
+      "id": 2,
+      "name": "Allow HTTP inbound to web",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.10.10/32",
+      "port": "80",
+      "priority": 110
+    },
+    {
+      "id": 3,
+      "name": "Deny Telnet inbound",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.10.0/24",
+      "port": "23",
+      "priority": 120
+    },
+    {
+      "id": 4,
+      "name": "Allow SSH from admin VPN",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.99.0.0/16",
+      "destination": "10.0.10.0/24",
+      "port": "22",
+      "priority": 130
+    },
+    {
+      "id": 5,
+      "name": "Deny SSH from internet",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.10.0/24",
+      "port": "22",
+      "priority": 140
+    },
+    {
+      "id": 6,
+      "name": "Allow DNS to resolver",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "udp",
+      "source": "10.0.0.0/16",
+      "destination": "10.0.20.53/32",
+      "port": "53",
+      "priority": 150
+    },
+    {
+      "id": 7,
+      "name": "Allow NTP to time server",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "udp",
+      "source": "10.0.0.0/16",
+      "destination": "10.0.20.123/32",
+      "port": "123",
+      "priority": 160
+    },
+    {
+      "id": 8,
+      "name": "Block SMB lateral movement",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "10.0.30.0/24",
+      "destination": "10.0.40.0/24",
+      "port": "445",
+      "priority": 170
+    },
+    {
+      "id": 9,
+      "name": "Allow PostgreSQL app to db",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.0.11.0/24",
+      "destination": "10.0.12.10/32",
+      "port": "5432",
+      "priority": 180
+    },
+    {
+      "id": 10,
+      "name": "Allow Redis app to cache",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.0.11.0/24",
+      "destination": "10.0.13.10/32",
+      "port": "6379",
+      "priority": 190
+    },
+    {
+      "id": 11,
+      "name": "Deny RDP external",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.50.0/24",
+      "port": "3389",
+      "priority": 200
+    },
+    {
+      "id": 12,
+      "name": "Allow ICMP monitoring",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "icmp",
+      "source": "10.0.200.0/24",
+      "destination": "10.0.0.0/16",
+      "port": "",
+      "priority": 210
+    },
+    {
+      "id": 13,
+      "name": "Deny ICMP internet",
+      "enabled": false,
+      "action": "deny",
+      "protocol": "icmp",
+      "source": "0.0.0.0/0",
+      "destination": "10.0.0.0/16",
+      "port": "",
+      "priority": 220
+    },
+    {
+      "id": 14,
+      "name": "Allow SMTP relay to mailhub",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.0.60.0/24",
+      "destination": "10.0.61.25/32",
+      "port": "25",
+      "priority": 230
+    },
+    {
+      "id": 15,
+      "name": "Deny outbound SMTP internet",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "10.0.0.0/16",
+      "destination": "0.0.0.0/0",
+      "port": "25",
+      "priority": 240
+    },
+    {
+      "id": 16,
+      "name": "Allow SNMP polling",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "udp",
+      "source": "10.0.210.0/24",
+      "destination": "10.0.70.0/24",
+      "port": "161",
+      "priority": 250
+    },
+    {
+      "id": 17,
+      "name": "Allow syslog to collector",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "udp",
+      "source": "10.0.0.0/16",
+      "destination": "10.0.220.10/32",
+      "port": "514",
+      "priority": 260
+    },
+    {
+      "id": 18,
+      "name": "Deny LDAP insecure",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "10.0.0.0/16",
+      "destination": "10.0.80.10/32",
+      "port": "389",
+      "priority": 270
+    },
+    {
+      "id": 19,
+      "name": "Allow LDAPS to directory",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.0.0.0/16",
+      "destination": "10.0.80.10/32",
+      "port": "636",
+      "priority": 280
+    },
+    {
+      "id": 20,
+      "name": "Allow API gateway to auth",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.0.90.0/24",
+      "destination": "10.0.91.10/32",
+      "port": "8443",
+      "priority": 290
+    },
+    {
+      "id": 21,
+      "name": "Deny legacy FTP",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "10.0.0.0/16",
+      "destination": "10.0.92.0/24",
+      "port": "21",
+      "priority": 300
+    },
+    {
+      "id": 22,
+      "name": "Allow SFTP batch jobs",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.0.93.0/24",
+      "destination": "10.0.94.20/32",
+      "port": "22",
+      "priority": 310
+    },
+    {
+      "id": 23,
+      "name": "Quarantine subnet block all",
+      "enabled": true,
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "10.0.250.0/24",
+      "destination": "10.0.0.0/16",
+      "port": "*",
+      "priority": 320
+    },
+    {
+      "id": 24,
+      "name": "Allow health checks",
+      "enabled": true,
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "10.0.230.0/24",
+      "destination": "10.0.10.0/24",
+      "port": "8080",
+      "priority": 330
+    }
+  ]
+}
