@@ -20,7 +20,7 @@ const firewallRuleFilters = (
 
 export function FirewallRuleList() {
   return (
-    <List filters={firewallRuleFilters}>
+    <List filters={firewallRuleFilters} perPage={5}>
       <DataTable rowClick="edit">
         <DataTable.Col source="id" />
         <DataTable.Col source="name" />

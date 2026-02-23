@@ -5,7 +5,7 @@
       "name": "Allow HTTPS inbound to web",
       "enabled": true,
       "action": "allow",
-      "protocol": "tcp",
+      "protocol": "icmp",
       "source": "0.0.0.0/0",
       "destination": "10.0.10.10/32",
       "port": "443",
@@ -16,11 +16,12 @@
       "name": "Allow HTTP inbound to web",
       "enabled": true,
       "action": "deny",
-      "protocol": "tcp",
+      "protocol": "icmp",
       "source": "0.0.0.0/0",
       "destination": "10.0.10.10/32",
       "port": "80",
-      "priority": 110
+      "priority": 110,
+      "portTo": "85"
     },
     {
       "id": 3,
