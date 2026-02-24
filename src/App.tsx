@@ -5,10 +5,11 @@ import {
   FirewallRuleList,
 } from './firewall-rules'
 import { dataProvider } from './providers/dataProvider'
+import { theme } from './theme'
 
 function App() {
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={dataProvider} theme={theme}>
       <Resource
         name="firewallRules"
         list={FirewallRuleList}

@@ -1,30 +1,46 @@
 import {
   BooleanField,
   DataTable,
-  Filter,
   List,
-  SelectInput,
-  TextInput,
 } from 'react-admin'
-import { actionChoices, enabledChoices } from './choices'
-
-
-
-const firewallRuleFilters = (
-  <Filter>
-    <TextInput source="name_like" label="Search name" alwaysOn />
-    <SelectInput source="enabled" label="Enabled" choices={enabledChoices} alwaysOn />
-    <SelectInput source="action" label="Action" choices={actionChoices} alwaysOn />
-  </Filter>
-)
+import { FirewallRuleListActions } from './FirewallRuleListActions'
+import { firewallRuleListFilters } from './FirewallRuleListFilters'
+import { StatusChipField } from './StatusChipField'
 
 export function FirewallRuleList() {
   return (
-    <List filters={firewallRuleFilters} perPage={5}>
-      <DataTable rowClick="edit">
+    <List
+      perPage={5}
+      filters={firewallRuleListFilters}
+      actions={<FirewallRuleListActions />}
+    >
+      <DataTable
+        rowClick="edit"
+        sx={{
+          '& .MuiTableCell-head': {
+            bgcolor: 'background.paper',
+            color: 'text.secondary',
+            borderBottomColor: 'divider',
+          },
+          '& .MuiTableCell-body': {
+            borderBottomColor: 'divider',
+          },
+        }}
+        rowSx={() => ({
+          '& td': {
+            transition: 'background-color 120ms ease',
+          },
+          '&:hover td': {
+            backgroundColor: 'action.hover',
+          },
+        })}
+      >
         <DataTable.Col source="id" />
         <DataTable.Col source="name" />
         <DataTable.Col source="enabled" field={BooleanField} />
+        <DataTable.Col label="Status" disableSort>
+          <StatusChipField />
+        </DataTable.Col>
         <DataTable.Col source="action" />
         <DataTable.Col source="protocol" />
       </DataTable>

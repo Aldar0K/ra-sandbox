@@ -5,8 +5,10 @@ import {
   SelectInput,
   SimpleForm,
   TextInput,
+  required,
 } from 'react-admin'
-import { actionChoices, protocolChoices } from './choices'
+import { actionChoices } from './choices'
+import { ProtocolSelectInput } from './ProtocolSelectInput'
 
 type FirewallRuleEditFormData = {
   enabled?: boolean
@@ -31,11 +33,7 @@ export function FirewallRuleEdit() {
                   choices={actionChoices}
                   disabled={isRuleDisabled}
                 />
-                <SelectInput
-                  source="protocol"
-                  choices={protocolChoices}
-                  disabled={isRuleDisabled}
-                />
+                <ProtocolSelectInput disabled={isRuleDisabled} validate={required()} />
 
                 {!isIcmp && (
                   <>

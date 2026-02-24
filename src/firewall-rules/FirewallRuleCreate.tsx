@@ -1,5 +1,6 @@
-import { BooleanInput, Create, SelectInput, SimpleForm, TextInput } from 'react-admin'
-import { actionChoices, protocolChoices } from './choices'
+import { BooleanInput, Create, SelectInput, SimpleForm, TextInput, required } from 'react-admin'
+import { actionChoices } from './choices'
+import { ProtocolSelectInput } from './ProtocolSelectInput'
 
 export function FirewallRuleCreate() {
   return (
@@ -8,7 +9,7 @@ export function FirewallRuleCreate() {
         <TextInput source="name" />
         <BooleanInput source="enabled" defaultValue={true} />
         <SelectInput source="action" choices={actionChoices} defaultValue="allow" />
-        <SelectInput source="protocol" choices={protocolChoices} defaultValue="tcp" />
+        <ProtocolSelectInput validate={required()} />
       </SimpleForm>
     </Create>
   )
